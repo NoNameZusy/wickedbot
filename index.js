@@ -10,8 +10,7 @@ const client = new Client({
 });
 
 // 🔐 TOKEN (güvende tut)
-client.login("MTUwOTY3OTI4MDE5NDMyNjY3OA.GYW6O9.q2R80Wz_-fgoDVBeqnR8w8dqMYFeuqQa3H_PoU");
-
+client.login(process.env.TOKEN);
 // ROLE IDS
 const PREMIUM_ROLE_ID = "1504928126625648720";
 const UNSIGNED_ROLE_ID = "1506371803730411611";
