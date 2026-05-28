@@ -58,10 +58,10 @@ client.on("messageCreate", async (message) => {
    try {
      await member.roles.remove(PREMIUM_ROLE_ID);
      await member.roles.add(UNSIGNED_ROLE_ID);
-     message.reply(`✅ **${member.user.tag}** has been unsigned successfully.`);
+     return message.reply(`✅ **${member.user.tag}** has been unsigned.`);
    } catch (err) {
      console.log(err);
-     message.reply("❌ Error: Permission or role hierarchy issue.");
+     return message.reply("❌ Error: Permission or role hierarchy issue.");
    }
  }
 
@@ -73,10 +73,10 @@ client.on("messageCreate", async (message) => {
    try {
      await member.roles.remove(UNSIGNED_ROLE_ID);
      await member.roles.add(PREMIUM_ROLE_ID);
-     message.reply(`✅ **${member.user.tag}** has been signed (premium restored).`);
+     return message.reply(`✅ **${member.user.tag}** has been signed (premium restored).`);
    } catch (err) {
      console.log(err);
-     message.reply("❌ Error: Permission or role hierarchy issue.");
+     return message.reply("❌ Error: Permission or role hierarchy issue.");
    }
  }
 
@@ -88,10 +88,10 @@ client.on("messageCreate", async (message) => {
    const reason = args.slice(2).join(" ") || "No reason provided";
    try {
      await member.kick(reason);
-     message.reply(`✅ **${member.user.tag}** has been kicked. Reason: ${reason}`);
+     return message.reply(`✅ **${member.user.tag}** has been kicked. Reason: ${reason}`);
    } catch (err) {
      console.log(err);
-     message.reply("❌ Error: Could not kick the user. Check role hierarchy and permissions.");
+     return message.reply("❌ Error: Could not kick the user. Check role hierarchy and permissions.");
    }
  }
 
@@ -103,10 +103,10 @@ client.on("messageCreate", async (message) => {
    const reason = args.slice(2).join(" ") || "No reason provided";
    try {
      await member.ban({ reason });
-     message.reply(`✅ **${member.user.tag}** has been banned. Reason: ${reason}`);
+     return message.reply(`✅ **${member.user.tag}** has been banned. Reason: ${reason}`);
    } catch (err) {
      console.log(err);
-     message.reply("❌ Error: Could not ban the user. Check role hierarchy and permissions.");
+     return message.reply("❌ Error: Could not ban the user. Check role hierarchy and permissions.");
    }
  }
 
@@ -125,7 +125,7 @@ client.on("messageCreate", async (message) => {
      setTimeout(() => confirmMsg.delete().catch(() => {}), 3000);
    } catch (err) {
      console.log(err);
-     message.reply("❌ Error: Could not delete messages. (Messages older than 14 days cannot be deleted)");
+     return message.reply("❌ Error: Could not delete messages. (Messages older than 14 days cannot be deleted)");
    }
  }
 });
